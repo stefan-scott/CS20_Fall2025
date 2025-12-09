@@ -1,16 +1,48 @@
 <html> 
    <head>
+   <!-- Demo Size - half screen website CTRL /     -->
      <title>DEMO PAGE</title>
    </head>
 
    <body>
-     <h1>My First Webpage</h1>
+    <!-- TWO GROUPS OF ELEMENTS:
+    Block Elements: take up a whole row
+                    start on a new line
+    Inline Elements:  flow left to the previous item
+                      new line if they don't fit                 -->
+     <a name="top"><h1>My First Webpage</h1></a>
      <h2>Test</h2>
      <h3>Test2</h3>
      <h4>Heading4</h4>
      <h5>Heading5</h5>
      <h6>Heading6</h6>
      <h7>Heading7</h7>
-     <!-- heading7 doesn't exist -->
+    <!-- heading7 doesn't exist -->
+
+     <!-- browsers largely ignore whitespace in the HTML -->
+     <p>          This is some sample text for our website
+      if I write it across several lines, that 
+      actually doesn't do anything...
+     </p>
+     <p>Do <b>paragraphs</b> flow? Nope they are blocks.</p>
+
+     <!-- Images: can either HOTLINK or link to files
+             we control. Need to include SRC attribute -->
+     <img width = "50px" src="https://i.natgeofe.com/n/18708334-6fce-40b5-ade6-a7e2db7035f2/01-goldfish-nationalgeographic_1567132_16x9.jpg?w=1200">
+     <img src="goldfish.webp" width ="50px">
+     <!-- Images are inline elements - try to fit on 
+     the current line. -->
+
+     <!-- LINKS:  link to external page
+                  link to internal (our own) page -->
+     <!-- EXTERNAL LINK -->
+     <a href = "https://futbol-11.com">
+     <p>Devin's Football Website</p>
+     <img src="goldfish.webp" width ="50px">
+     </a>
+     <a href = "#top">GO TO TOP</a>
+<!-- Internal link to second.html -->
+     <a href = "second.html">Second Page Here.</a>
+
    </body>
 </html>
