@@ -32,7 +32,7 @@ def show_grid():
         result += ":"
         
     result = result[0:-1]
-    print(result)
+#     print(result)
     microbit.display.show(microbit.Image(result))
 
 def set_pixel(x, y, intensity):
@@ -75,3 +75,45 @@ for i in range(5):
         set_all(brightness)
         time.sleep(0.005)
 set_all(0)
+
+
+# ----- START Sprite Game Here ---------------
+
+#---- SETUP CODE ----
+player_x = 2
+player_y = 4
+
+start_time = time.time()
+# time.time() returns seconds since
+# January 1, 1970, midnight
+# GMT -0
+
+
+plot(player_x, player_y)
+
+# ---- MAIN LOOP -----
+while True:
+    queue_pixel(player_x, player_y, 0)
+    # Check for user event:
+    if microbit.button_a.was_pressed():
+        player_x -= 1
+        if player_x < 0:
+            player_x = 0
+    
+    if microbit.button_b.was_pressed():
+        player_x = min(player_x + 1, 4)
+     
+     
+    #Timer Code
+    elapsed_time = time.time() - start_time
+    print(elapsed_time)
+    
+    #check for 1 second elapsed:
+    if elapsed_time > 1:
+        print("One Second Elapsed")
+        start_time = time.time() #reset timer
+     
+    
+    plot(player_x, player_y)
+    time.sleep(0.1)
+
