@@ -79,9 +79,21 @@ set_all(0)
 
 # ----- START Sprite Game Here ---------------
 
+def generate_item_x():
+    #returns an x-position for new item (0,1,2,3,4)
+    #ensures it doesn't line up with player
+    x = random.randrange(0,5)
+    while x == player_x:
+        x = random.randrange(0,5)
+    return x
+
 #---- SETUP CODE ----
 player_x = 2
 player_y = 4
+
+item_x = generate_item_x()
+item_y = 0
+queue_pixel(item_x, item_y, 5)
 
 start_time = time.time()
 # time.time() returns seconds since
@@ -94,6 +106,7 @@ plot(player_x, player_y)
 # ---- MAIN LOOP -----
 while True:
     queue_pixel(player_x, player_y, 0)
+    
     # Check for user event:
     if microbit.button_a.was_pressed():
         player_x -= 1
@@ -109,9 +122,24 @@ while True:
     print(elapsed_time)
     
     #check for 1 second elapsed:
-    if elapsed_time > 1:
+    if elapsed_time > 0.4:
         print("One Second Elapsed")
         start_time = time.time() #reset timer
+        
+        #drop item, and also check for "catching"
+        queue_pixel(item_x, item_y,0)
+        item_y += 1
+        
+        if item_y == 4: #reached the bottom
+            if item_x == player_x:
+                print("ITEM CAUGHT")
+            else:
+                print("ITEM MISSED")
+            item_y = 0
+            item_x = generate_item_x()
+            
+         
+        
      
     
     plot(player_x, player_y)
