@@ -122,7 +122,7 @@ while True:
     print(elapsed_time)
     
     #check for 1 second elapsed:
-    if elapsed_time > 0.4:
+    if elapsed_time > 1:
         print("One Second Elapsed")
         start_time = time.time() #reset timer
         
